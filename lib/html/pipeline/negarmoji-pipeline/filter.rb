@@ -103,7 +103,7 @@ module HTML
         def emoji_image_tag(name)
           require "active_support/core_ext/hash/indifferent_access"
           html_attrs = default_img_attrs(name)
-            .merge!((context[:img_attrs] || {}).with_indifferent_access)
+                           .merge!((context[:img_attrs] || {}))
             .map do |attr, value|
             !value.nil? && %(#{attr}="#{value.respond_to?(:call) && value.call(name) || value}")
           end
