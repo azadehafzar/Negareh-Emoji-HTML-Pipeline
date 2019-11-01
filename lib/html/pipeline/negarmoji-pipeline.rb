@@ -10,7 +10,7 @@ module HTML
       # Implements new filters used by Negareh Emoji HTML Pipeline
 
       # Custom filter implementations
-      autoload :NegarehEmojiFilter, "negarmoji-pipeline/filter"
+      autoload :NegarehEmojiFilter, "html/pipeline/negarmoji-pipeline/filter"
 
       def initialize(filters)
         @filters = filters.flatten.freeze
