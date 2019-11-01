@@ -88,16 +88,26 @@ module HTML
           context[:extension] || "svg"
         end
 
+        # Build a regexp that matches all valid :emoji: names.
+        def self.emoji_pattern
+          @emoji_pattern ||= %r!:(#{emoji_names.map { |name| Regexp.escape(name) }.join("|")}):!
+        end
+
+        def self.emoji_names
+          Emoji.all.map(&:aliases).flatten.sort
+        end
+
         private
 
         # Build an emoji image tag
         def emoji_image_tag(name)
           require "active_support/core_ext/hash/indifferent_access"
-          html_attrs =
-            default_img_attrs(name)
-              .merge!((context[:img_attrs] || {}).with_indifferent_access)
-              .map { |attr, value| !value.nil? && %(#{attr}="#{value.respond_to?(:call) && value.call(name) || value}") }
-              .reject(&:blank?).join(" ".freeze)
+          html_attrs = default_img_attrs(name)
+            .merge!((context[:img_attrs] || {}).with_indifferent_access)
+            .map do |attr, value|
+            !value.nil? && %(#{attr}="#{value.respond_to?(:call) && value.call(name) || value}")
+          end
+            .reject(&:blank?).join(" ")
 
           "<img #{html_attrs}>"
         end
@@ -135,17 +145,6 @@ module HTML
             DEFAULT_IGNORED_ANCESTOR_TAGS | context[:ignored_ancestor_tags]
           else
             DEFAULT_IGNORED_ANCESTOR_TAGS
-          end
-        end
-
-        class << self
-          # Build a regexp that matches all valid :emoji: names.
-          def self.emoji_pattern
-            @emoji_pattern ||= %r!:(#{emoji_names.map { |name| Regexp.escape(name) }.join("|")}):!
-          end
-
-          def self.emoji_names
-            Emoji.all.map(&:aliases).flatten.sort
           end
         end
       end
