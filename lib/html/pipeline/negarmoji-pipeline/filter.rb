@@ -11,21 +11,23 @@ module HTML
       # Context:
       #   :asset_root (required) - base url to link to emoji sprite.
       #
-      #   :asset_path (optional) - url path to link to emoji sprite. :file_name can be used as
-      #   a placeholder for the sprite file name.
+      #   :asset_path (optional) - url path to link to emoji sprite. :file_name can
+      #   be used as a placeholder for the sprite file name.
       #   If no asset_path is set ":file_name" is used.
       #
-      #   :extension (optional) - extension to be use for emoji files, default extension is svg.
+      #   :extension (optional) - extension to be use for emoji files, default
+      #   extension is svg.
       #
-      #   :ignored_ancestor_tags (optional) - Tags to stop the emojification. Node has matched
-      #   ancestor HTML tags will not be emojified. Default to pre, code, and tt tags. Extra tags
-      #   please pass in the form of array, e.g., %w(blockquote summary).
+      #   :ignored_ancestor_tags (optional) - Tags to stop the emojification. Node
+      #   has matched ancestor HTML tags will not be emojified. Default to pre, code,
+      #   and tt tags. Extra tags please pass in the form of array,
+      #   e.g., %w(blockquote summary).
       #
       #   :img_attrs (optional) - Attributes for generated img tag.
-      #   E.g. Pass { "draggble" => true, "height" => nil } to set draggable attribute to "true"
-      #   and clear height attribute of generated img tag.
+      #   E.g. Pass { "draggble" => true, "height" => nil } to set draggable
+      #   attribute to "true" and clear height attribute of generated img tag.
       class NegarehEmojiFilter < Filter
-        DEFAULT_IGNORED_ANCESTOR_TAGS = %w(pre code tt).freeze
+        DEFAULT_IGNORED_ANCESTOR_TAGS = %w[pre code tt].freeze
 
         def call
           doc.search(".//text()").each do |node|
@@ -70,9 +72,11 @@ module HTML
 
         # The url path to link emoji sprites
         #
-        # :file_name can be used in the asset_path as a placeholder for the sprite file name.
+        # :file_name can be used in the asset_path as a placeholder for the sprite
+        # file name.
         # If no asset_path is set in the context ":file_name" is used.
-        # Returns the context's asset_path or the default path if no context asset_path is given.
+        # Returns the context's asset_path or the default path if no context
+        # asset_path is given.
         def asset_path(name)
           if context[:asset_path]
             context[:asset_path].gsub(":file_name", emoji_filename(name))
@@ -90,7 +94,9 @@ module HTML
 
         # Build a regexp that matches all valid :emoji: names.
         def self.emoji_pattern
-          @emoji_pattern ||= %r!:(#{emoji_names.map { |name| Regexp.escape(name) }.join("|")}):!
+          @emoji_pattern ||= %r{
+          :(#{emoji_names.map { |name| Regexp.escape(name) }.join("|")}):
+        }x
         end
 
         def self.emoji_names
@@ -103,11 +109,12 @@ module HTML
         def emoji_image_tag(name)
           require "active_support/core_ext/hash/indifferent_access"
           html_attrs = default_img_attrs(name)
-                           .merge!((context[:img_attrs] || {}))
-            .map do |attr, value|
-            !value.nil? && %(#{attr}="#{value.respond_to?(:call) && value.call(name) || value}")
+                         .merge!((context[:img_attrs] || {}))
+                         .map do |attr, value|
+            call_respond = value.respond_to?(:call)
+            !value.nil? && %(#{attr}="#{call_respond && value.call(name) || value}")
           end
-            .reject(&:blank?).join(" ")
+                         .reject(&:blank?).join(" ")
 
           "<img #{html_attrs}>"
         end
@@ -121,7 +128,7 @@ module HTML
             :src    => emoji_url(name).to_s,
             :height => "20",
             :width  => "20",
-            :align  => "absmiddle",
+            :align  => "absmiddle"
           }
         end
 

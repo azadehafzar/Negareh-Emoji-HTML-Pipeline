@@ -4,8 +4,8 @@ require "html/pipeline"
 require "html/pipeline/negarmoji-pipeline/version"
 
 module HTML
-  class Pipeline
-    class NegarMojiHtmlPipeline
+  class Pipeline # :nodoc:
+    class NegarMojiHtmlPipeline # :nodoc:
       # Negareh Emoji HTML Pipeline related filters for html-pipeline.
       # Implements new filters used by Negareh Emoji HTML Pipeline
 
