@@ -6,7 +6,7 @@
 </p>
 
 <h1 align="center">Negareh Emoji HTML Pipeline</h1>
-<h3 align="center">Emoji filter pipeline for html to convert emoji aliases to actual emoji images.</h3>
+<h3 align="center">HTML emoji filter pipeline to convert emoji aliases to actual emoji images.</h3>
 
 <p align="center">
   <a title="Open Source" href="https://opensource.com/resources/what-open-source" target="_blank">
