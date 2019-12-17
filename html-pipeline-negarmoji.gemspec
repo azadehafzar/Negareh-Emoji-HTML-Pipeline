@@ -11,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.authors = ["Mohammad Mahdi Baghbani Pourvahid"]
   spec.email = "MahdiBaghbani@protonmail.com"
   spec.homepage = "https://gitlab.com/Azadeh-Afzar/Web-Development/Negareh-Emoji-HTML-Pipeline"
-  spec.description = "Negareh emoji library emoji filter for html pipeline, this package is more
-                      flexible and customizable then the original emoji filter present in
-                      html/pipeline"
+  spec.description = "Negareh emoji library is an emoji filter plugin for html pipeline,
+                      this package is more flexible and customizable then the default
+                      emoji filter in html/pipeline."
   spec.summary = "Negareh emoji html pipeline"
   spec.licenses = "GPL-3.0"
 
