@@ -57,3 +57,36 @@
 > the main repository is served on 
 ><a href="https://gitlab.com/Azadeh-Afzar/Web-Development/Negareh-Emoji-HTML-Pipeline">GitLab</a>, all developments and
 >discussions, issue tracking and merge requests take place in GitLab.  
+
+
+## Negareh Emoji Library
+
+
+Negareh emoji library is an emoji filter plugin for html pipeline, this package is
+more flexible and customizable then the default emoji filter in html/pipeline.
+
+
+### Installation
+
+Add `html-pipeline-negarmoji` to your Gemfile.
+
+``` ruby
+gem 'negarmoji'
+```
+
+## Contribution
+
+If you want to contribute to this project, please read [CONTRIBUTING](CONTRIBUTING.md).
+
+## Code of Conduct
+
+Visit the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Roadmap
+
+Visit the [Roadmap](ROADMAP.md) to keep track of which features we are currently
+working on.
+
+## License
+
+Licensed under the [GPLv3](LICENSE).
