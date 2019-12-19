@@ -59,7 +59,7 @@
 >discussions, issue tracking and merge requests take place in GitLab.  
 
 
-## Negareh Emoji Library
+## Negareh Emoji HTML Pipeline
 
 
 Negareh emoji library is an emoji filter plugin for html pipeline, this package is
@@ -71,7 +71,7 @@ more flexible and customizable then the default emoji filter in html/pipeline.
 Add `html-pipeline-negarmoji` to your Gemfile.
 
 ``` ruby
-gem 'negarmoji'
+gem `html-pipeline-negarmoji`
 ```
 
 ## Contribution
