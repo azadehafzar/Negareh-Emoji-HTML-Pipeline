@@ -62,7 +62,7 @@ module HTML
           end
         end
 
-        # The base url to link emoji sprites
+        # The base url to link emoji sprites.
         #
         # Raises ArgumentError if context option has not been provided.
         # Returns the context's asset_root.
@@ -70,7 +70,7 @@ module HTML
           context[:asset_root]
         end
 
-        # The url path to link emoji sprites
+        # The url path to link emoji sprites.
         #
         # :file_name can be used in the asset_path as a placeholder for the sprite
         # file name.
@@ -105,7 +105,7 @@ module HTML
 
         private
 
-        # Build an emoji image tag
+        # Build an emoji image tag.
         def emoji_image_tag(name)
           require "active_support/core_ext/hash/indifferent_access"
           html_attrs = default_img_attrs(name)
@@ -119,12 +119,15 @@ module HTML
           "<img #{html_attrs}>"
         end
 
-        # Default attributes for img tag
+        # Default attributes for img tag.
         def default_img_attrs(name)
+          # extract emoji info.
+          emoji = Emoji.find_by_alias(name)
+          # default attrs.
           {
             :class  => "emoji",
-            :title  => ":#{name}:",
-            :alt    => ":#{name}:",
+            :title  => emoji.name.to_s,
+            :alt    => emoji.raw.to_s,
             :src    => emoji_url(name).to_s,
             :height => "20",
             :width  => "20",
