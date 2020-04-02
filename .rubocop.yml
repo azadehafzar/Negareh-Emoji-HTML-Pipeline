@@ -10,7 +10,7 @@ AllCops:
     - ./*.gemspec
 
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedHashRocketStyle: table
 
 Layout/MultilineMethodCallIndentation:
