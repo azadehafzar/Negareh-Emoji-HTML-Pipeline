@@ -1,7 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7.2
+  NewCops: disable
+  SuggestExtensions: false
   Exclude:
     - vendor/**/*
     - test/**/*
@@ -9,9 +11,11 @@ AllCops:
     - Rakefile
     - ./*.gemspec
 
-
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
+
+Layout/LineLength:
+  Max: 85
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented_relative_to_receiver
@@ -25,9 +29,6 @@ Metrics/BlockLength:
 
 Metrics/CyclomaticComplexity:
   Max: 10
-
-Metrics/LineLength:
-  Max: 85
 
 Metrics/MethodLength:
   Max: 40
